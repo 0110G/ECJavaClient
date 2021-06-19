@@ -3,7 +3,7 @@ package com.ecJavaClient.operations;
 import com.electionController.structures.APIParams.GetVoterQuery;
 import com.electionController.structures.Response;
 
-public class GetVoter extends BaseOperation<GetVoterQuery, Response>{
+public class GetVoter extends BaseOperation<GetVoterQuery>{
 
     @Override
     protected final String getHttpRequestMethod() {
@@ -17,6 +17,6 @@ public class GetVoter extends BaseOperation<GetVoterQuery, Response>{
 
     @Override
     public final Response executeAction() {
-        return null;
+        return super.execute();
     }
 }

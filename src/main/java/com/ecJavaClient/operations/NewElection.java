@@ -3,7 +3,7 @@ package com.ecJavaClient.operations;
 import com.electionController.structures.APIParams.NewElectionQuery;
 import com.electionController.structures.Response;
 
-public class NewElection extends BaseOperation<NewElectionQuery, Response> {
+public class NewElection extends BaseOperation<NewElectionQuery> {
 
     @Override
     protected final String getHttpRequestMethod() {
@@ -12,12 +12,12 @@ public class NewElection extends BaseOperation<NewElectionQuery, Response> {
 
     @Override
     protected final String getOperation() {
-        return "kNewElection";
+        return "NewElection";
     }
 
     @Override
     public final Response executeAction() {
-        System.out.println(super.execute());
-        return null;
+        Response response = super.execute();
+        return response;
     }
 }

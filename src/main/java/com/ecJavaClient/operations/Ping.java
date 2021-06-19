@@ -2,7 +2,7 @@ package com.ecJavaClient.operations;
 
 import com.electionController.structures.Response;
 
-public class Ping extends BaseOperation<Object, Response> {
+public class Ping extends BaseOperation<Object> {
 
     @Override
     protected final String getHttpRequestMethod() {
@@ -16,7 +16,7 @@ public class Ping extends BaseOperation<Object, Response> {
 
     @Override
     public final Response executeAction() {
-        String resp = super.execute();
+        Response resp = super.execute();
         return null;
     }
 }
