@@ -1,5 +1,3 @@
-package com.ecJavaClient.operations;
-
 import com.ecJavaClient.operations.NewElection;
 import com.ecJavaClient.operations.Ping;
 import com.electionController.structures.APIParams.NewElectionQuery;
