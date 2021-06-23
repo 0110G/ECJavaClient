@@ -16,7 +16,6 @@ public class Ping extends BaseOperation<Object> {
 
     @Override
     public final Response executeAction() {
-        Response resp = super.execute();
-        return null;
+        return super.execute();
     }
 }

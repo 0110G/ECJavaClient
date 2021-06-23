@@ -1,7 +1,10 @@
 package com.ecJavaClient.operations;
 
+import com.ecJavaClient.deserializers.HashMapExtractors;
 import com.electionController.structures.APIParams.GetVoterQuery;
 import com.electionController.structures.Response;
+
+import java.util.LinkedHashMap;
 
 public class GetVoter extends BaseOperation<GetVoterQuery>{
 
@@ -17,6 +20,9 @@ public class GetVoter extends BaseOperation<GetVoterQuery>{
 
     @Override
     public final Response executeAction() {
-        return super.execute();
+        Response response = super.execute();
+        response.setResponse(
+                HashMapExtractors.extractVoterFromResponse((LinkedHashMap<String, Object>)response.getResponse()));
+        return response;
     }
 }

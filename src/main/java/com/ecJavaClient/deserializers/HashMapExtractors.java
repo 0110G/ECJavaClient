@@ -1,37 +1,16 @@
-package com.ecJavaClient.operations;
+package com.ecJavaClient.deserializers;
 
-import com.ecJavaClient.deserializers.HashMapExtractors;
-import com.electionController.structures.Election;
-import com.electionController.structures.Voter;
 import com.electionController.structures.Contestant;
+import com.electionController.structures.Election;
 import com.electionController.structures.Post;
-import com.electionController.structures.Response;
-import com.electionController.structures.APIParams.NewElectionQuery;
+import com.electionController.structures.Voter;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-public class NewElection extends BaseOperation<NewElectionQuery> {
-
-    @Override
-    protected final String getHttpRequestMethod() {
-        return "POST";
-    }
-
-    @Override
-    protected final String getOperation() {
-        return "NewElection";
-    }
-
-    @Override
-    public final Response executeAction() {
-        Response response = super.execute();
-        response.setResponse(HashMapExtractors.extractElectionFromResponse((HashMap<String , Object>)response.getResponse()));
-        return response;
-    }
-
-    private Election extractElectionFromResponse(HashMap<String , Object> responseMap) {
+public class HashMapExtractors {
+    public static final Election extractElectionFromResponse(HashMap<String , Object> responseMap) {
         Election election = new Election();
         election.setAdminVoterId((String) responseMap.get("adminVoterId"));
         election.setElectionId((String) responseMap.get("electionId"));
@@ -48,7 +27,7 @@ public class NewElection extends BaseOperation<NewElectionQuery> {
         return election;
     }
 
-    private Voter extractVoterFromResponse(HashMap <String, Object> responseMap) {
+    public static final Voter extractVoterFromResponse(HashMap <String, Object> responseMap) {
         Voter voter = new Voter();
         voter.setVoterId((String) responseMap.get("voterId"));
         voter.setVoterName((String) responseMap.get("voterName"));
@@ -57,7 +36,7 @@ public class NewElection extends BaseOperation<NewElectionQuery> {
         return voter;
     }
 
-    private Post extractPostFromResponse(HashMap <String, Object> responseMap) {
+    public static final Post extractPostFromResponse(HashMap <String, Object> responseMap) {
         Post post = new Post();
         post.setPostId((String) responseMap.get("postId"));
         post.setPostIndex((Integer) responseMap.get("postIndex"));
@@ -70,7 +49,7 @@ public class NewElection extends BaseOperation<NewElectionQuery> {
         return post;
     }
 
-    private Contestant extractPostContestantFromResponse(HashMap <String, Object> responseMap) {
+    public static final Contestant extractPostContestantFromResponse(HashMap <String, Object> responseMap) {
         Contestant contestant = new Contestant();
         contestant.setElectionList(null);
         contestant.setVoterId((String) responseMap.get("voterId"));

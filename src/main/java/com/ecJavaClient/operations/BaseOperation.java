@@ -56,6 +56,7 @@ public abstract class BaseOperation<Query> {
                     response = post(payload);
                     break;
                 case "DELETE":
+                    response = delete(payload);
                     break;
                 case "PUT":
                     break;
@@ -87,6 +88,13 @@ public abstract class BaseOperation<Query> {
 
     private final HttpResponse<String> post(final String payload) throws UnirestException {
         return Unirest.post(buildUrl(host, port, getOperation()))
+                .header("Content-Type", "application/json")
+                .body(payload)
+                .asString();
+    }
+
+    private final HttpResponse<String> delete(final String payload) throws UnirestException {
+        return Unirest.delete(buildUrl(host, port, getOperation()))
                 .header("Content-Type", "application/json")
                 .body(payload)
                 .asString();
